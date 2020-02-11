@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, Snackbar } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { useMutation } from '@apollo/react-hooks';
 import "../App.css";
 
