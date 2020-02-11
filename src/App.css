@@ -2,6 +2,9 @@
   height: 40vmin;
   pointer-events: none;
 }
+.App {
+  height: 100%;
+}
 
 
 
