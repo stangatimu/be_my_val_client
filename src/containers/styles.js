@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     },
     content:{
         background:"#fff",
-        minHeight:"15vh",
+        minHeight:"70vh",
         borderTopLeftRadius: "60% 30%",
         borderTopRightRadius: "60% 30%",
         minWidth:"120%",
