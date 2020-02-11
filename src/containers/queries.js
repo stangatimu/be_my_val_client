@@ -9,6 +9,9 @@ mutation($name:String!,$alias:String!,$sender:String!){
         alias:$alias
       }}){
         _id
+        recepient{
+          name
+        }
       }
     }
   }

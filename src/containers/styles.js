@@ -53,7 +53,23 @@ const useStyles = makeStyles({
     form:{
         width:"90%",
         margin:"0 auto"
-    }
+    },
+    alert:{
+        borderRadius: "5px",
+        lineHeight: ".9em",
+        width:"90%",
+        padding: "10px",
+        margin:"10px auto"
+    },
+    error:{
+        backgroundColor: "#cea0a4",
+        color: "#721c24 !important",
+    },
+    success:{
+        color: "#155724 !important",
+        backgroundColor: "#d4edda",
+        borderColor: "#c3e6cb",
+    },
 });
 
 export default useStyles;
