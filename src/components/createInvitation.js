@@ -7,11 +7,9 @@ import useStyles from "../containers/styles";
 const CreateInvitation = ({onCreate,is_loading}) => {
     const classes = useStyles();
     const [ details, setDetails ] = useState({
-        recepient:{
-            name:"",
-            alias:""
-        },
-        sender:""
+        name:"kare",
+        alias:"purity",
+        sender:"stan"
     });
 
     const onCreateInvitation = (e)=>{
@@ -35,14 +33,11 @@ const CreateInvitation = ({onCreate,is_loading}) => {
                   id="recepient_name"
                   placeholder="His/Her name"
                   variant="outlined"
-                  value={details.recepient.name}
+                  value={details.name}
                   className={classes.input}
                   onChange={(e)=>setDetails({
                       ...details,
-                      recepient:{
-                          ...details.recepient,
-                          name:e.target.value
-                        }
+                      name:e.target.value
                     })}
                 />
                 <TextField
@@ -53,13 +48,10 @@ const CreateInvitation = ({onCreate,is_loading}) => {
                   placeholder="nickname (optional)"
                   variant="outlined"
                   className={classes.input}
-                  value={details.recepient.alias}
+                  value={details.alias}
                   onChange={(e)=>setDetails({
                     ...details,
-                    recepient:{
-                        ...details.recepient,
-                        alias:e.target.value
-                      }
+                    alias:e.target.value
                   })}
                 />
                 <TextField
@@ -77,9 +69,16 @@ const CreateInvitation = ({onCreate,is_loading}) => {
                     sender:e.target.value
                   })}
                 />
-                <Button disabled={is_loading} fullWidth type="submit" className={classes.button} variant="contained">
-                    {!is_loading?"Create Invitation":(<CircularProgress size={24} thickness={4}/>)}
-                </Button>
+                {!is_loading && (
+                    <Button disabled={is_loading} fullWidth type="submit" className={classes.button} variant="contained">
+                        Create CreateInvitation
+                    </Button>
+                )}
+                {is_loading && (
+                    <Button fullWidth disabled className={classes.button} variant="contained">
+                        <CircularProgress size={24} thickness={4}/>
+                    </Button>
+                )}
             </form>
         </Grid>
     );
