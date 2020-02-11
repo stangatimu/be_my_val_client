@@ -27,7 +27,17 @@ const CreateInvitation = () => {
     return (
         <Grid className={classes.root} justify="center" container direction="row" >
             <Grid item container justify="center" direction="column" alignItems="center">
-				{data && data.Invitation.Create._id && (
+                <img
+                src={golden_ring} 
+                className={`${classes.golden_ring_home} App-logo`} 
+                alt="spining golden ring"/>
+                <Typography className={classes.caption} align="center">
+                    GniLeEf sIhTeVoLi<span aria-label="love eyes" role="img">😍</span>
+                </Typography>              
+            </Grid>
+
+            <Grid style={{minHeight:"40vh"}} item className={classes.content} alignItems="center" justify="center" container direction="row">
+                {data && data.Invitation.Create._id && (
 					<Typography className={`${classes.success} ${classes.alert}`} component="p">
 						{`Success! send link below to ${data.Invitation.Create.recepient.name}. Goodluck`}
                         <span aria-label="love eyes" role="img">😉</span>
@@ -45,16 +55,6 @@ const CreateInvitation = () => {
 						{"Sorry, something went wrong. Try again later."}
 					</Typography>)
 				}
-                <img
-                src={golden_ring} 
-                className={`${classes.golden_ring_home} App-logo`} 
-                alt="spining golden ring"/>
-                <Typography className={classes.caption} align="center">
-                    GniLeEf sIhTeVoLi<span aria-label="love eyes" role="img">😍</span>
-                </Typography>              
-            </Grid>
-
-            <Grid style={{minHeight:"40vh"}} item className={classes.content} alignItems="center" justify="center" container direction="row">
                 {!data && <CreateInvitationForm is_loading={loading} onCreate={(data)=>createInvitation({variables:data})}/>}
                 {!!data && !!data.Invitation.Create._id && (
                     <ShareInvitation id={data.Invitation.Create._id}/>

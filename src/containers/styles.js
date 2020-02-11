@@ -70,6 +70,11 @@ const useStyles = makeStyles({
         backgroundColor: "#d4edda",
         borderColor: "#c3e6cb",
     },
+    invitation_link:{
+        color:colors.red,
+        fontSize:"1.3em",
+        fontStyle:"italic"
+    }
 });
 
 export default useStyles;
