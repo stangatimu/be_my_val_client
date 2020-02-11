@@ -8,9 +8,7 @@ const ShareInvitation = ({id}) => {
     const url = `${window.location.origin}/r/${id}`;
     return (
         <Grid style={{marginTop:"-110px"}} item container alignItems="flex-start" justify="center">
-            <Typography className={classes.input} align="center" variant="h5">
-                    Share Invitation
-            </Typography>
+            
             <Typography className={classes.input} variant="p" align="center">
                 <Link  className={classes.invitation_link} style={{wordBreak:"break-word"}} to="#">
                     {url}

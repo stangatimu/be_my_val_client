@@ -11,8 +11,8 @@ import golden_ring from "../assets/golden_ring.svg";
 const Home = () => {
     const classes = useStyles();
     return (
-        <Grid className={classes.root} justify="center" container direction="row" >
-            <Grid item container justify="center" direction="column" alignItems="center">
+        <Grid className={classes.root}  justify="center" alignItems='center' container>
+            <Grid item container style={{height:"200px"}} justify="center" direction="column" alignItems="center">
                 <img
                 src={golden_ring} 
                 className={`${classes.golden_ring_home} App-logo`} 

@@ -20,24 +20,26 @@ const CreateInvitation = () => {
     const classes = useStyles();
     const [ createInvitation, {loading,data,error}] = useMutation(CREATE_INVITATION);
 
+    let is_data = false;
     if(data && data.Invitation.Create){
+        is_data = true;
         saveInvitationToLocalStorage(data.Invitation.Create._id);
     }
 
     return (
         <Grid className={classes.root} justify="center" container direction="row" >
-            <Grid item container justify="center" direction="column" alignItems="center">
+            <Grid item container style={{height:"200px"}} justify="center" direction="column" alignItems="center">
                 <img
                 src={golden_ring} 
                 className={`${classes.golden_ring_home} App-logo`} 
                 alt="spining golden ring"/>
                 <Typography className={classes.caption} align="center">
-                    GniLeEf sIhTeVoLi<span aria-label="love eyes" role="img">😍</span>
+                    GniLeEf sIhT eVoLi<span aria-label="love eyes" role="img">😍</span>
                 </Typography>              
             </Grid>
 
-            <Grid style={{minHeight:"70vh"}} item className={classes.content} alignItems="center" justify="center" container direction="row">
-                {data && data.Invitation.Create._id && (
+            <Grid style={{minHeight:"70"}} item className={classes.content} alignItems="center" justify="center" container direction="row">
+                {data && !!data.Invitation.Create && data.Invitation.Create._id && (
 					<Typography className={`${classes.success} ${classes.alert}`} component="p">
 						{`Success! send link below to ${data.Invitation.Create.recepient.name}. Goodluck`}
                         <span aria-label="love eyes" role="img">😉</span>
@@ -46,7 +48,7 @@ const CreateInvitation = () => {
 				{/* errors */}
 				{error && !!error.graphQLErrors.length && (
 					<Typography className={`${classes.error} ${classes.alert}`}  component="p">
-						{"Sorry, something went wrong. Try again later."}
+						{error.graphQLErrors[0].message}
 					</Typography>)
 				}
 				{/* errors */}
@@ -55,8 +57,8 @@ const CreateInvitation = () => {
 						{"Sorry, something went wrong. Try again later."}
 					</Typography>)
 				}
-                {!data && <CreateInvitationForm is_loading={loading} onCreate={(data)=>createInvitation({variables:data})}/>}
-                {!!data && !!data.Invitation.Create._id && (
+                {!is_data && <CreateInvitationForm is_loading={loading} onCreate={(data)=>createInvitation({variables:data,errorPolicy:"all"})}/>}
+                {!!data &&  !!data.Invitation.Create && !!data.Invitation.Create._id && (
                     <ShareInvitation id={data.Invitation.Create._id}/>
                 )}
             </Grid>           

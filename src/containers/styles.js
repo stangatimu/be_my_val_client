@@ -12,13 +12,14 @@ let colors = {
 const useStyles = makeStyles({
     root:{
         backgroundImage:`url(${bmv_bg})`,
-        minHeight: "100vh",
+        minHeight: "90vh",
         backgroundSize: "contain",
         overflowX:"hidden"
     },
     content:{
         background:"#fff",
         minHeight:"70vh",
+        height:"400px",
         borderTopLeftRadius: "60% 30%",
         borderTopRightRadius: "60% 30%",
         minWidth:"120%",
@@ -27,7 +28,7 @@ const useStyles = makeStyles({
     golden_ring_home:{
         marginBottom:"-10px",
         width:"100px",
-        height:"160px"
+        height:"120px"
     },
     caption:{
         color:"white",
@@ -35,7 +36,7 @@ const useStyles = makeStyles({
         fontWeight:"bold"
     },
     welcome_message:{
-        fontSize:"2.1em",
+        fontSize:"1.8em",
         marginTop:"30px",
         fontFamily: "'Satisfy', cursive"
     },
@@ -79,7 +80,7 @@ const useStyles = makeStyles({
     },
     recepient_name:{
         fontFamily:"'Satisfy', cursive",
-        margin:"20px 0",
+        margin:"10px 0",
         fontWeight:"100",
         fontSize:"1.8em"
     }

@@ -27,6 +27,7 @@ const CreateInvitation = ({onCreate,is_loading}) => {
                 </Typography>
                 <TextField
                   error
+                  min="3"
                   required
                   size="small"
                   type="text"
@@ -43,6 +44,7 @@ const CreateInvitation = ({onCreate,is_loading}) => {
                 />
                 <TextField
                   error
+                  min="3"
                   size="small"
                   fullWidth
                   type="text"
@@ -59,6 +61,7 @@ const CreateInvitation = ({onCreate,is_loading}) => {
                 <TextField
                   error
                   required
+                  min="3"
                   size="small"
                   fullWidth
                   id="sender_name"

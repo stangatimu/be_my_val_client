@@ -14,20 +14,21 @@ import AccepetedInvitation from '../components/accepetedInvitation';
 const Respond = ({match}) => {
     const classes = useStyles();
     const { data, error, loading } = useQuery(GET_INVITATION_BY_ID,{
-        variables:{id:match.params.invitation}
+        variables:{id:match.params.invitation},
+        errorPolicy:"all"
     });
 
     const [ onRespond, { data:res_data,loading:res_loading,error:res_error}] = useMutation(RESPOND_TO_INVITATION);
 
     return (
         <Grid className={classes.root} justify="center" container direction="row" >
-            <Grid item container justify="center" direction="column" alignItems="center">
+            <Grid item container style={{height:"200px"}} justify="center" direction="column" alignItems="center">
                 <img
                 src={golden_ring} 
                 className={`${classes.golden_ring_home} App-logo`} 
                 alt="spining golden ring"/>
                 <Typography className={classes.caption} align="center">
-                    GniLeEf sIhTeVoLi<span aria-label="love eyes" role="img">😍</span>
+                    GniLeEf sIhT eVoLi<span aria-label="love eyes" role="img">😍</span>
                 </Typography>              
             </Grid>
             <Grid item className={classes.content} alignItems="center" justify="flex-start" container direction="column">
@@ -59,10 +60,10 @@ const Respond = ({match}) => {
 				}
                 {!!data && !res_data && data.Invitation.GetByID && (
                     <Fragment>
-                    <Typography style={{fontSize:"3.5em",lineHeight:".6em"}} className={classes.welcome_message} align="center">
+                    <Typography style={{fontSize:"2.5em",lineHeight:".6em"}} className={classes.welcome_message} align="center">
                         Will you 
                     </Typography>
-                    <Typography style={{fontSize:"3.5em",lineHeight:".2em"}} className={classes.welcome_message}  align="center">
+                    <Typography style={{fontSize:"2.5em",lineHeight:".2em"}} className={classes.welcome_message}  align="center">
                         be my 
                     </Typography>
                     <Typography style={{fontSize:"3.5em",lineHeight:".7em"}} className={classes.welcome_message} align="center">
@@ -76,7 +77,7 @@ const Respond = ({match}) => {
                             <Button 
                             fullWidth 
                             onClick={()=>{
-                                onRespond({variables:{id:match.params.invitation,status:true}})
+                                onRespond({variables:{id:match.params.invitation,status:true},errorPolicy:"all"})
                             }}
                             className={classes.button} 
                             variant="contained">
@@ -85,7 +86,7 @@ const Respond = ({match}) => {
                             <Button 
                             fullWidth
                             onClick={()=>{
-                                onRespond({variables:{id:match.params.invitation,status:false}})
+                                onRespond({variables:{id:match.params.invitation,status:false},errorPolicy:"all"})
                             }} 
                             color="secondary" 
                             variant="outlined">
@@ -97,7 +98,7 @@ const Respond = ({match}) => {
                        <CircularProgress color="secondary" size={24} thickness={4}/> 
                     )}
                     <Grid item container justify="center">
-                        <Typography style={{position:"absolute",fontStyle:"italic",bottom:"60px"}}>
+                        <Typography style={{position:"absolute",fontStyle:"italic",bottom:"20px"}}>
                             with love from&ensp;{data.Invitation.GetByID.sender}
                         </Typography>
                     </Grid>
@@ -110,7 +111,7 @@ const Respond = ({match}) => {
                      <AccepetedInvitation sad={true}/>
                  )}
                  {!!res_data && (
-                     <Button className={classes.button} style={{position:"absolute",bottom:"40px"}} variant="contained" size="big">
+                     <Button className={classes.button} style={{position:"absolute",bottom:"20px"}} variant="contained" size="big">
                         <Link to="/invite">
                             Create Invitation
                         </Link>
