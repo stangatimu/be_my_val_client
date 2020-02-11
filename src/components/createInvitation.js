@@ -15,7 +15,7 @@ const CreateInvitation = ({onCreate,is_loading}) => {
     const onCreateInvitation = (e)=>{
         e.preventDefault();
 
-        onCreate(details);
+        onCreate({...details,alias:details.alias || "null"});
 
         // submit form
     }
@@ -29,6 +29,7 @@ const CreateInvitation = ({onCreate,is_loading}) => {
                   error
                   required
                   size="small"
+                  type="text"
                   fullWidth
                   id="recepient_name"
                   placeholder="His/Her name"
@@ -44,6 +45,7 @@ const CreateInvitation = ({onCreate,is_loading}) => {
                   error
                   size="small"
                   fullWidth
+                  type="text"
                   id="alias"
                   placeholder="nickname (optional)"
                   variant="outlined"
@@ -60,6 +62,7 @@ const CreateInvitation = ({onCreate,is_loading}) => {
                   size="small"
                   fullWidth
                   id="sender_name"
+                  type="text"
                   placeholder="Your name"
                   variant="outlined"
                   className={classes.input}
