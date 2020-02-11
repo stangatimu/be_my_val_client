@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 import "../App.css";
 
 import useStyles from './styles';
+import { saveInvitationToLocalStorage } from './../lib';
 //assets
 import golden_ring from "../assets/golden_ring.svg";
 
@@ -12,12 +13,16 @@ import CreateInvitationForm from "../components/createInvitation";
 
 // queries
 import { CREATE_INVITATION } from './queries';
+import ShareInvitation from '../components/shareInvitation';
     
 
 const CreateInvitation = () => {
     const classes = useStyles();
     const [ createInvitation, {loading,data,error}] = useMutation(CREATE_INVITATION);
-    let is_error_snackbar= false;
+
+    if(data && data.Invitation.Create){
+        saveInvitationToLocalStorage(data.Invitation.Create._id);
+    }
 
     return (
         <Grid className={classes.root} justify="center" container direction="row" >
@@ -50,7 +55,10 @@ const CreateInvitation = () => {
             </Grid>
 
             <Grid style={{minHeight:"40vh"}} item className={classes.content} alignItems="center" justify="center" container direction="row">
-                <CreateInvitationForm is_loading={loading} onCreate={(data)=>createInvitation({variables:data})}/>
+                {!data && <CreateInvitationForm is_loading={loading} onCreate={(data)=>createInvitation({variables:data})}/>}
+                {!!data && !!data.Invitation.Create._id && (
+                    <ShareInvitation id={data.Invitation.Create._id}/>
+                )}
             </Grid>           
         </Grid>
     );
