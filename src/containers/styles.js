@@ -46,6 +46,13 @@ const useStyles = makeStyles({
             color:"white",
             textDecoration:"none"
         }
+    },
+    input:{
+        marginBottom:"25px"
+    },
+    form:{
+        width:"90%",
+        margin:"0 auto"
     }
 });
 
