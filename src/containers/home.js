@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button,Grid, Typography } from '@material-ui/core';
+import "../App.css";
 
 import useStyles from './styles';
 
@@ -14,7 +15,7 @@ const Home = () => {
             <Grid item container justify="center" direction="column" alignItems="center">
                 <img
                 src={golden_ring} 
-                className={classes.golden_ring_home} 
+                className={`${classes.golden_ring_home} App-logo`} 
                 alt="spining golden ring"/>
                 <Typography className={classes.caption} align="center">
                     GniLeEf sIhTeVoLi😍
