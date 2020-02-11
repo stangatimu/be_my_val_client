@@ -7,9 +7,9 @@ import useStyles from "../containers/styles";
 const CreateInvitation = ({onCreate,is_loading}) => {
     const classes = useStyles();
     const [ details, setDetails ] = useState({
-        name:"kare",
-        alias:"purity",
-        sender:"stan"
+        name:"",
+        alias:"",
+        sender:""
     });
 
     const onCreateInvitation = (e)=>{
