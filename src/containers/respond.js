@@ -98,7 +98,7 @@ const Respond = ({match}) => {
                        <CircularProgress color="secondary" size={24} thickness={4}/> 
                     )}
                     <Grid item container justify="center">
-                        <Typography style={{position:"absolute",fontStyle:"italic",bottom:"20px"}}>
+                        <Typography style={{position:"absolute",fontStyle:"italic",bottom:"5px"}}>
                             with love from&ensp;{data.Invitation.GetByID.sender}
                         </Typography>
                     </Grid>
