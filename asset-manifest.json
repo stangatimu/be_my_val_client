@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/be_my_val_client/static/css/main.891b5058.chunk.css",
+    "main.js": "/be_my_val_client/static/js/main.7d254aae.chunk.js",
+    "main.js.map": "/be_my_val_client/static/js/main.7d254aae.chunk.js.map",
+    "runtime-main.js": "/be_my_val_client/static/js/runtime-main.7000328f.js",
+    "runtime-main.js.map": "/be_my_val_client/static/js/runtime-main.7000328f.js.map",
+    "static/js/2.8f1600b9.chunk.js": "/be_my_val_client/static/js/2.8f1600b9.chunk.js",
+    "static/js/2.8f1600b9.chunk.js.map": "/be_my_val_client/static/js/2.8f1600b9.chunk.js.map",
+    "index.html": "/be_my_val_client/index.html",
+    "precache-manifest.e1be1091f61e52dabfec6ab975355d4a.js": "/be_my_val_client/precache-manifest.e1be1091f61e52dabfec6ab975355d4a.js",
+    "service-worker.js": "/be_my_val_client/service-worker.js",
+    "static/css/main.891b5058.chunk.css.map": "/be_my_val_client/static/css/main.891b5058.chunk.css.map",
+    "static/js/2.8f1600b9.chunk.js.LICENSE.txt": "/be_my_val_client/static/js/2.8f1600b9.chunk.js.LICENSE.txt",
+    "static/media/bmv_bg.jpg": "/be_my_val_client/static/media/bmv_bg.af15c23d.jpg",
+    "static/media/couple_kiss.gif": "/be_my_val_client/static/media/couple_kiss.49522884.gif",
+    "static/media/golden_ring.svg": "/be_my_val_client/static/media/golden_ring.7b98e1ea.svg",
+    "static/media/sad_cat.gif": "/be_my_val_client/static/media/sad_cat.383d1bd5.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7000328f.js",
+    "static/js/2.8f1600b9.chunk.js",
+    "static/css/main.891b5058.chunk.css",
+    "static/js/main.7d254aae.chunk.js"
+  ]
+}
