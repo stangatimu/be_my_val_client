@@ -32,3 +32,15 @@ query($id:ID!){
     }
 }
 `;
+
+export const RESPOND_TO_INVITATION = gql`
+mutation($id:ID!,$status:Boolean!){
+    Invitation{
+      RespondToInvitation(params:{
+        _id:$id,
+        status:$status,
+        comment:"I accept your request!"
+      })
+    }
+  }
+`;

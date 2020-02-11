@@ -6,14 +6,17 @@ import useStyles from './styles';
 
 // golden ring
 import golden_ring from "../assets/golden_ring.svg";
-import { useQuery } from '@apollo/react-hooks';
-import { GET_INVITATION_BY_ID } from './queries';
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import { GET_INVITATION_BY_ID, RESPOND_TO_INVITATION } from './queries';
 
 const Respond = ({match}) => {
     const classes = useStyles();
     const { data, error, loading } = useQuery(GET_INVITATION_BY_ID,{
         variables:{id:match.params.invitation}
     });
+
+    const [ onRespond, { data:res_data,loading:res_loading,error:res_error}] = useMutation(RESPOND_TO_INVITATION);
+
     return (
         <Grid className={classes.root} justify="center" container direction="row" >
             <Grid item container justify="center" direction="column" alignItems="center">
@@ -27,13 +30,8 @@ const Respond = ({match}) => {
             </Grid>
             <Grid item className={classes.content} alignItems="center" justify="flex-start" container direction="column">
                 {loading && !data && (
-                    <CircularProgress size={40} thickness={4}/>
+                    <CircularProgress color="secondary" size={40} thickness={4}/>
                 )}
-                {data && data.Invitation.GetByID && (
-					<Typography className={`${classes.success} ${classes.alert}`} component="p">
-                        <span aria-label="love eyes" role="img">😉</span>
-					</Typography>
-				)}
 				{/* errors */}
 				{error && !!error.graphQLErrors.length && (
 					<Typography className={`${classes.error} ${classes.alert}`}  component="p">
@@ -47,7 +45,7 @@ const Respond = ({match}) => {
 					</Typography>)
 				}
             
-                {!!data && data.Invitation.GetByID && (
+                {!!data && !res_data && data.Invitation.GetByID && (
                     <Fragment>
                     <Typography style={{fontSize:"3.5em",lineHeight:".6em"}} className={classes.welcome_message} align="center">
                         Will you 
@@ -61,12 +59,34 @@ const Respond = ({match}) => {
                     <Typography align="center" className={`${classes.recepient_name} recepient_name`}>
                         {data.Invitation.GetByID.recepient.name}&ensp;<span className="blinker">_</span>
                     </Typography>
-                    <Button fullWidth className={classes.button} variant="contained" size="big">
-                        YES
-                    </Button>
-                    <Button fullWidth color="secondary" variant="outlined" size="big">
-                        NO
-                    </Button>
+                    {!res_loading && (
+                        <Fragment>
+                            <Button 
+                            fullWidth 
+                            onClick={()=>{
+                                onRespond({variables:{id:match.params.invitation,status:true}})
+                            }}
+                            className={classes.button} 
+                            variant="contained">
+                                YES
+                            </Button>
+                            <Button 
+                            fullWidth
+                            onClick={()=>{
+                                onRespond({variables:{id:match.params.invitation,status:false}})
+                            }} 
+                            color="secondary" 
+                            variant="outlined">
+                                NO
+                            </Button>
+                        </Fragment>
+                    )}
+                    {res_loading && (
+                       <CircularProgress color="secondary" size={24} thickness={4}/> 
+                    )}
+                    {/* {!!res_data && res_data.Invitation.RespondToInvitation && (
+                        // LOVE ANIMATIONS
+                    )} */}
                     <Grid item container justify="center">
                         <Typography style={{position:"absolute",fontStyle:"italic",bottom:"60px"}}>
                             with love from&ensp;{data.Invitation.GetByID.sender}

@@ -76,7 +76,7 @@ const CreateInvitation = ({onCreate,is_loading}) => {
                 )}
                 {is_loading && (
                     <Button fullWidth disabled className={classes.button} variant="contained">
-                        <CircularProgress size={24} thickness={4}/>
+                        <CircularProgress color="secondary" size={24} thickness={4}/>
                     </Button>
                 )}
             </form>
