@@ -22,7 +22,7 @@ const Home = () => {
                 </Typography>              
             </Grid>
 
-            <Grid item className={classes.content} alignItems="center" justify="center" container direction="row">
+            <Grid item className={classes.content} alignItems="center" justify="center" container direction="column">
                 <Typography className={classes.welcome_message} align="center">
                     Need a date this valentine's? create an invitation below
                     and make him/her feel special.
