@@ -41,6 +41,7 @@ const useStyles = makeStyles({
     },
     button:{
         backgroundColor:colors.red,
+        margin:"10px auto",
         color:"white !important",
         "& a":{
             color:"white",
@@ -74,6 +75,12 @@ const useStyles = makeStyles({
         color:colors.red,
         fontSize:"1.3em",
         fontStyle:"italic"
+    },
+    recepient_name:{
+        fontFamily:"'Satisfy', cursive",
+        margin:"20px 0",
+        fontWeight:"100",
+        fontSize:"1.8em"
     }
 });
 

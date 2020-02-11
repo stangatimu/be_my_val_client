@@ -16,3 +16,19 @@ mutation($name:String!,$alias:String!,$sender:String!){
     }
   }
 `;
+
+export const GET_INVITATION_BY_ID = gql`
+query($id:ID!){
+    Invitation{
+      GetByID(_id:$id){
+        _id
+        sender
+        recepient{
+          name
+          alias
+        }
+        status
+      }
+    }
+}
+`;

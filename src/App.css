@@ -3,6 +3,8 @@
   pointer-events: none;
 }
 
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 10s linear;
@@ -16,4 +18,30 @@
   to {
     transform: rotateY(360deg);
   }
+}
+
+.recepient_name {
+	overflow: hidden;
+	white-space: nowrap;
+	margin: 0 auto;
+	animation: typing 7.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+	from {
+		width: 0;
+	}
+	to {
+		width: 100%;
+	}
+}
+
+.blinker {
+	animation: blinker 1s step-end infinite;
+}
+
+@keyframes blinker {
+	50% {
+		opacity: 0;
+	}
 }
