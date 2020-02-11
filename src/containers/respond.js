@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from "react-router-dom";
 import { Button,Grid, Typography, CircularProgress } from '@material-ui/core';
 import "../App.css";
 
@@ -8,6 +9,7 @@ import useStyles from './styles';
 import golden_ring from "../assets/golden_ring.svg";
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { GET_INVITATION_BY_ID, RESPOND_TO_INVITATION } from './queries';
+import AccepetedInvitation from '../components/accepetedInvitation';
 
 const Respond = ({match}) => {
     const classes = useStyles();
@@ -44,7 +46,17 @@ const Respond = ({match}) => {
 						{"Sorry, something went wrong. Try again later."}
 					</Typography>)
 				}
-            
+                {res_error && !!error.graphQLErrors.length && (
+					<Typography className={`${classes.error} ${classes.alert}`}  component="p">
+						{"Sorry, something went wrong. Try again later."}
+					</Typography>)
+				}
+				{/* errors */}
+				{res_error && error.networkError && (
+					<Typography className={`${classes.error} ${classes.alert}`}  component="p">
+						{"Sorry, something went wrong. Try again later."}
+					</Typography>)
+				}
                 {!!data && !res_data && data.Invitation.GetByID && (
                     <Fragment>
                     <Typography style={{fontSize:"3.5em",lineHeight:".6em"}} className={classes.welcome_message} align="center">
@@ -84,15 +96,25 @@ const Respond = ({match}) => {
                     {res_loading && (
                        <CircularProgress color="secondary" size={24} thickness={4}/> 
                     )}
-                    {/* {!!res_data && res_data.Invitation.RespondToInvitation && (
-                        // LOVE ANIMATIONS
-                    )} */}
                     <Grid item container justify="center">
                         <Typography style={{position:"absolute",fontStyle:"italic",bottom:"60px"}}>
                             with love from&ensp;{data.Invitation.GetByID.sender}
                         </Typography>
                     </Grid>
                     </Fragment>
+                 )}
+                 {!!res_data && !!res_data.Invitation.RespondToInvitation && (
+                     <AccepetedInvitation sad={false}/>
+                 )}
+                 {!!res_data && !res_data.Invitation.RespondToInvitation && (
+                     <AccepetedInvitation sad={true}/>
+                 )}
+                 {!!res_data && (
+                     <Button className={classes.button} style={{position:"absolute",bottom:"40px"}} variant="contained" size="big">
+                        <Link to="/invite">
+                            Create Invitation
+                        </Link>
+                    </Button>
                  )}
             </Grid>            
         </Grid>
