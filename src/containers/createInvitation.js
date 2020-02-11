@@ -36,7 +36,7 @@ const CreateInvitation = () => {
                 </Typography>              
             </Grid>
 
-            <Grid style={{minHeight:"40vh"}} item className={classes.content} alignItems="center" justify="center" container direction="row">
+            <Grid style={{minHeight:"70vh"}} item className={classes.content} alignItems="center" justify="center" container direction="row">
                 {data && data.Invitation.Create._id && (
 					<Typography className={`${classes.success} ${classes.alert}`} component="p">
 						{`Success! send link below to ${data.Invitation.Create.recepient.name}. Goodluck`}
