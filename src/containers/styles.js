@@ -83,6 +83,11 @@ const useStyles = makeStyles({
         margin:"10px 0",
         fontWeight:"100",
         fontSize:"1.8em"
+    },
+    sent_invitation_name:{
+        fontFamily:"'Satisfy', cursive",
+        fontWeight:"bold",
+        fontSize:"1.6"
     }
 });
 

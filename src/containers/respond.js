@@ -11,7 +11,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { GET_INVITATION_BY_ID, RESPOND_TO_INVITATION } from './queries';
 import AccepetedInvitation from '../components/accepetedInvitation';
 
-const Respond = ({match}) => {
+const Respond = ({match,saved_invitations}) => {
     const classes = useStyles();
     const { data, error, loading } = useQuery(GET_INVITATION_BY_ID,{
         variables:{id:match.params.invitation},
@@ -28,7 +28,7 @@ const Respond = ({match}) => {
                 className={`${classes.golden_ring_home} App-logo`} 
                 alt="spining golden ring"/>
                 <Typography className={classes.caption} align="center">
-                    GniLeEf sIhT eVoLi<span aria-label="love eyes" role="img">😍</span>
+                I got this feeling<span aria-label="love eyes" role="img">😍</span>
                 </Typography>              
             </Grid>
             <Grid item className={classes.content} alignItems="center" justify="flex-start" container direction="column">
@@ -100,6 +100,11 @@ const Respond = ({match}) => {
                     <Grid item container justify="center">
                         <Typography style={{position:"absolute",fontStyle:"italic",bottom:"5px"}}>
                             with love from&ensp;{data.Invitation.GetByID.sender}
+                            {data.Invitation.GetByID.recepient && data.Invitation.GetByID.recepient.alias && (
+                                <span>
+                                    &ensp;to {data.Invitation.GetByID.recepient.alias}
+                                </span>
+                            )}
                         </Typography>
                     </Grid>
                     </Fragment>
@@ -117,6 +122,11 @@ const Respond = ({match}) => {
                         </Link>
                     </Button>
                  )}
+                 {!!saved_invitations.length && !!res_data && (
+                    <Typography style={{marginTop:"30px"}} align="center">
+                        Looks liked you have a saved invitation <Link to="/sent">Click here</Link> to check on them
+                    </Typography>
+                )}
             </Grid>            
         </Grid>
     );

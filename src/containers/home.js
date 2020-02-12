@@ -8,8 +8,9 @@ import useStyles from './styles';
 // golden ring
 import golden_ring from "../assets/golden_ring.svg";
 
-const Home = () => {
+const Home = ({saved_invitations}) => {
     const classes = useStyles();
+    
     return (
         <Grid className={classes.root}  justify="center" alignItems='center' container>
             <Grid item container style={{height:"200px"}} justify="center" direction="column" alignItems="center">
@@ -18,7 +19,7 @@ const Home = () => {
                 className={`${classes.golden_ring_home} App-logo`} 
                 alt="spining golden ring"/>
                 <Typography className={classes.caption} align="center">
-                    GniLeEf sIhTeVoLi<span aria-label="love eyes" role="img">😍</span>
+                I got this feeling<span aria-label="love eyes" role="img">😍</span>
                 </Typography>              
             </Grid>
 
@@ -32,6 +33,11 @@ const Home = () => {
                         Create Invitation
                     </Link>
                 </Button>
+                {!!saved_invitations && !!saved_invitations.length && (
+                    <Typography style={{marginTop:"30px"}} align="center">
+                        Looks liked you have a saved invitation <Link to="/sent">Click here</Link> to check on them
+                    </Typography>
+                )}
             </Grid>            
         </Grid>
     );

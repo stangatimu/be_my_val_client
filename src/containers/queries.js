@@ -44,3 +44,19 @@ mutation($id:ID!,$status:Boolean!){
     }
   }
 `;
+
+export const GET_SENT_INVITAIONS = gql`
+query($ids:[ID]!){
+  Invitation{
+    GetManyByIds(_ids:$ids){
+      _id
+      status
+      recepient{
+        name
+        alias
+      }
+      sender
+    }
+  }
+}
+`;
