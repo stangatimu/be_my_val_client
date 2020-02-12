@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link as RouterLink } from "react-router-dom";
 import { Grid, Link,Typography } from '@material-ui/core';
 import { FacebookShareButton,WhatsappShareButton,TwitterShareButton,RedditShareButton,TelegramShareButton, FacebookIcon, WhatsappIcon, TelegramIcon, TwitterIcon, RedditIcon } from "react-share";
 import useStyles from '../containers/styles';
@@ -18,7 +19,7 @@ const ShareInvitation = ({id}) => {
             <Typography className={classes.input} align="center" variant="p">
                 or share via;
             </Typography>
-            <Grid item container justify="space-around" direction="row" xs={12}>
+            <Grid item container justify="center" direction="row" xs={12}>
                 <FacebookShareButton url={url}>
                     <FacebookIcon size={32} round={true}/>
                 </FacebookShareButton>
@@ -35,6 +36,9 @@ const ShareInvitation = ({id}) => {
                     <RedditIcon size={32} round={true}/>
                 </RedditShareButton> 
             </Grid>
+            <Typography style={{marginTop:"30px"}} align="center">
+                to check on invitation status, <RouterLink to="/sent">Click here</RouterLink>
+            </Typography>
         </Grid>
     );
 }
