@@ -8,6 +8,7 @@ import  ApolloClient from 'apollo-boost';
 import Home from './home';
 import Create from './createInvitation';
 import Respond from './respond';
+import SentInvitations from './sentInvitations';
 
 const client = new ApolloClient({
 	uri: process.env.REACT_APP_API_URL,
@@ -19,7 +20,7 @@ const   Invitation = () => {
             <Route path="/" exact component={()=>(<Home/>)}/>
             <Route path="/invite" component={()=>(<Create/>)}/>
             <Route path="/r/:invitation" component={(props)=>(<Respond {...props}/>)}/>
-            <Route path="/invitations" component={()=>(<p>see invitation status</p>)}/>
+            <Route path="/sent" component={()=>(<SentInvitations/>)}/>
         </Fragment>
     );
 }

@@ -13,7 +13,7 @@ const Home = () => {
     const classes = useStyles();
 
     let saved_invitations = getInvitationsFromLocalStorage();
-    console.log(new Set(saved_invitations));
+    
     return (
         <Grid className={classes.root}  justify="center" alignItems='center' container>
             <Grid item container style={{height:"200px"}} justify="center" direction="column" alignItems="center">
@@ -36,7 +36,7 @@ const Home = () => {
                         Create Invitation
                     </Link>
                 </Button>
-                {!!saved_invitations && saved_invitations.length && (
+                {!!saved_invitations && !!saved_invitations.length && (
                     <Fragment>
                         <Typography style={{marginTop:"30px"}} align="center">
                             Looks liked you have a saved invitation <Link to="/sent">Click here</Link> to check on them
