@@ -1,18 +1,15 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button,Grid, Typography } from '@material-ui/core';
 import "../App.css";
 
 import useStyles from './styles';
-import { getInvitationsFromLocalStorage } from '../lib';
 
 // golden ring
 import golden_ring from "../assets/golden_ring.svg";
 
-const Home = () => {
+const Home = ({saved_invitations}) => {
     const classes = useStyles();
-
-    let saved_invitations = getInvitationsFromLocalStorage();
     
     return (
         <Grid className={classes.root}  justify="center" alignItems='center' container>
@@ -37,12 +34,9 @@ const Home = () => {
                     </Link>
                 </Button>
                 {!!saved_invitations && !!saved_invitations.length && (
-                    <Fragment>
-                        <Typography style={{marginTop:"30px"}} align="center">
-                            Looks liked you have a saved invitation <Link to="/sent">Click here</Link> to check on them
-                        </Typography>
-
-                    </Fragment>
+                    <Typography style={{marginTop:"30px"}} align="center">
+                        Looks liked you have a saved invitation <Link to="/sent">Click here</Link> to check on them
+                    </Typography>
                 )}
             </Grid>            
         </Grid>

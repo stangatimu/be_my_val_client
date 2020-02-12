@@ -11,7 +11,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { GET_INVITATION_BY_ID, RESPOND_TO_INVITATION } from './queries';
 import AccepetedInvitation from '../components/accepetedInvitation';
 
-const Respond = ({match}) => {
+const Respond = ({match,saved_invitations}) => {
     const classes = useStyles();
     const { data, error, loading } = useQuery(GET_INVITATION_BY_ID,{
         variables:{id:match.params.invitation},
@@ -122,6 +122,11 @@ const Respond = ({match}) => {
                         </Link>
                     </Button>
                  )}
+                 {!!saved_invitations.length && !!res_data && (
+                    <Typography style={{marginTop:"30px"}} align="center">
+                        Looks liked you have a saved invitation <Link to="/sent">Click here</Link> to check on them
+                    </Typography>
+                )}
             </Grid>            
         </Grid>
     );

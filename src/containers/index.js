@@ -3,6 +3,8 @@ import { Route } from 'react-router-dom';
 import {ApolloProvider} from "@apollo/react-hooks";
 import  ApolloClient from 'apollo-boost';
 
+import { getInvitationsFromLocalStorage } from '../lib';
+
 
 //components
 import Home from './home';
@@ -15,11 +17,12 @@ const client = new ApolloClient({
 });
 
 const   Invitation = () => {
+    let saved_invitations = getInvitationsFromLocalStorage();
     return (
         <Fragment>
-            <Route path="/" exact component={()=>(<Home/>)}/>
-            <Route path="/invite" component={()=>(<Create/>)}/>
-            <Route path="/r/:invitation" component={(props)=>(<Respond {...props}/>)}/>
+            <Route path="/" exact component={()=>(<Home saved_invitations={saved_invitations} />)}/>
+            <Route path="/invite" component={()=>(<Create saved_invitations={saved_invitations}/>)}/>
+            <Route path="/r/:invitation" component={(props)=>(<Respond saved_invitations={saved_invitations} {...props}/>)}/>
             <Route path="/sent" component={()=>(<SentInvitations/>)}/>
         </Fragment>
     );

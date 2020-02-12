@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import { Grid, Typography } from '@material-ui/core';
 import { useMutation } from '@apollo/react-hooks';
 import "../App.css";
@@ -16,7 +17,7 @@ import { CREATE_INVITATION } from './queries';
 import ShareInvitation from '../components/shareInvitation';
     
 
-const CreateInvitation = () => {
+const CreateInvitation = ({saved_invitations}) => {
     const classes = useStyles();
     const [ createInvitation, {loading,data,error}] = useMutation(CREATE_INVITATION);
 
@@ -60,6 +61,11 @@ const CreateInvitation = () => {
                 {!is_data && <CreateInvitationForm is_loading={loading} onCreate={(data)=>createInvitation({variables:data,errorPolicy:"all"})}/>}
                 {!!data &&  !!data.Invitation.Create && !!data.Invitation.Create._id && (
                     <ShareInvitation id={data.Invitation.Create._id}/>
+                )}
+                {!!saved_invitations.length && !loading && (
+                    <Typography style={{marginTop:"30px"}} align="center">
+                        Looks liked you have a saved invitation <Link to="/sent">Click here</Link> to check on them
+                    </Typography>
                 )}
             </Grid>           
         </Grid>
