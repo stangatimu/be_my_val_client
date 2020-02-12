@@ -28,7 +28,7 @@ const Respond = ({match}) => {
                 className={`${classes.golden_ring_home} App-logo`} 
                 alt="spining golden ring"/>
                 <Typography className={classes.caption} align="center">
-                    GniLeEf sIhT eVoLi<span aria-label="love eyes" role="img">😍</span>
+                I got this feeling<span aria-label="love eyes" role="img">😍</span>
                 </Typography>              
             </Grid>
             <Grid item className={classes.content} alignItems="center" justify="flex-start" container direction="column">
@@ -100,6 +100,11 @@ const Respond = ({match}) => {
                     <Grid item container justify="center">
                         <Typography style={{position:"absolute",fontStyle:"italic",bottom:"5px"}}>
                             with love from&ensp;{data.Invitation.GetByID.sender}
+                            {data.Invitation.GetByID.recepient && data.Invitation.GetByID.recepient.alias && (
+                                <span>
+                                    &ensp;to {data.Invitation.GetByID.recepient.alias}
+                                </span>
+                            )}
                         </Typography>
                     </Grid>
                     </Fragment>

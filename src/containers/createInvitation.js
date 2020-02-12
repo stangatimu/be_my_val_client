@@ -34,7 +34,7 @@ const CreateInvitation = () => {
                 className={`${classes.golden_ring_home} App-logo`} 
                 alt="spining golden ring"/>
                 <Typography className={classes.caption} align="center">
-                    GniLeEf sIhT eVoLi<span aria-label="love eyes" role="img">😍</span>
+                I got this feeling<span aria-label="love eyes" role="img">😍</span>
                 </Typography>              
             </Grid>
 
