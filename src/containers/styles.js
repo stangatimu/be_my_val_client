@@ -37,7 +37,8 @@ const useStyles = makeStyles({
     },
     welcome_message:{
         fontSize:"1.8em",
-        marginTop:"30px",
+        lineHeight:"1.2em",
+        marginTop:"10px",
         fontFamily: "'Satisfy', cursive"
     },
     button:{

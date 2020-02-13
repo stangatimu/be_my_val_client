@@ -7,6 +7,8 @@ import useStyles from './styles';
 
 // golden ring
 import golden_ring from "../assets/golden_ring.svg";
+import static_couple from "../assets/static_couple.png";
+
 
 const Home = ({saved_invitations}) => {
     const classes = useStyles();
@@ -28,6 +30,7 @@ const Home = ({saved_invitations}) => {
                     Need a date this valentine's? create an invitation below
                     and make him/her feel special.
                 </Typography>
+                <img alt="toon couple" style={{height:"150px"}} src={static_couple} />
                 <Button className={classes.button} variant="contained" size="big">
                     <Link to="/invite">
                         Create Invitation
