@@ -8,7 +8,7 @@ const AccepetedInvitation = ({sad}) => {
         return <img alt="sad_face" src={sad_cat} style={{width:"200px",margin:"20px auto",borderRadius:"50%"}}/>
     }
     return (
-        <img alt="toon kiss" src={toon_couple_kiss} style={{width:"104%",margin:"-10px 0 0 -2%",borderRadius:'inherit',}}/>
+        <img alt="toon kiss" src={toon_couple_kiss} style={{width:"100%",borderRadius:'inherit',}}/>
     );
 }
 

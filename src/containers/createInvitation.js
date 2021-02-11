@@ -19,15 +19,15 @@ import ShareInvitation from '../components/shareInvitation';
 const CreateInvitation = ({saved_invitations}) => {
     const classes = useStyles();
     const [ createInvitation, {loading,data,error}] = useMutation(CREATE_INVITATION);
-
-    let is_data = false;
-    if(data && data.Invitation.Create){
-        is_data = true;
-        saveInvitationToLocalStorage(data.Invitation.Create._id);
-    }
+    
+    React.useEffect(()=>{
+        if(data?.Invitation?.Create){
+            saveInvitationToLocalStorage(data.Invitation.Create._id);
+        }
+    },[data])
 
     return (
-        <Grid className={classes.root} justify="center" container direction="row" >
+        <Grid className={classes.root} justify="center" container alignItems="flex-start" direction="row" >
             <Grid item container style={{height:"200px"}} justify="center" direction="column" alignItems="center">
                 <img
                 src={golden_ring} 
@@ -38,7 +38,15 @@ const CreateInvitation = ({saved_invitations}) => {
                 </Typography>              
             </Grid>
 
-            <Grid style={{minHeight:"70"}} item className={classes.content} alignItems="center" justify="center" container direction="row">
+            <Grid 
+            style={{minHeight:"70"}} 
+            item className={`${classes.content} 
+            ${classes.form_content}`} 
+            alignItems="center" 
+            justify="center" 
+            container 
+            direction="row"
+            >
                 {data && !!data.Invitation.Create && data.Invitation.Create._id && (
 					<Typography className={`${classes.success} ${classes.alert}`} component="p">
 						{`Success! send link below to ${data.Invitation.Create.recepient.name}. Goodluck`}
@@ -46,20 +54,25 @@ const CreateInvitation = ({saved_invitations}) => {
 					</Typography>
 				)}
 				{/* errors */}
-				{error && !!error.graphQLErrors.length && (
+				{error?.graphQLErrors?.length && (
 					<Typography className={`${classes.error} ${classes.alert}`}  component="p">
 						{error.graphQLErrors[0].message}
 					</Typography>)
 				}
 				{/* errors */}
-				{error && error.networkError && (
+				{error?.networkError && (
 					<Typography className={`${classes.error} ${classes.alert}`}  component="p">
 						{"Sorry, something went wrong. Try again later."}
-					</Typography>)
+					</Typography>
+                )
 				}
-                {!is_data && <CreateInvitationForm is_loading={loading} onCreate={(data)=>createInvitation({variables:data,errorPolicy:"all"})}/>}
-                {!!data &&  !!data.Invitation.Create && !!data.Invitation.Create._id && (
-                    <ShareInvitation id={data.Invitation.Create._id}/>
+                
+                {!data?.Invitation?.Create? 
+                <CreateInvitationForm 
+                is_loading={loading} 
+                onCreate={(data)=>createInvitation({variables:data,errorPolicy:"all"})}/>:
+                (
+                    <ShareInvitation name={data?.Invitation?.Create?._id?.recepient?.name || "Love"} id={"data.Invitation.Create._id"}/>
                 )}
             </Grid>           
         </Grid>

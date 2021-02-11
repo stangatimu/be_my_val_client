@@ -1,23 +1,28 @@
 import React from 'react';
 import { Link as RouterLink } from "react-router-dom";
-import { Grid, Link,Typography } from '@material-ui/core';
-import { FacebookShareButton,WhatsappShareButton,TwitterShareButton,RedditShareButton,TelegramShareButton, FacebookIcon, WhatsappIcon, TelegramIcon, TwitterIcon, RedditIcon } from "react-share";
+import { Grid,Typography } from '@material-ui/core';
+import { 
+    FacebookShareButton,
+    WhatsappShareButton,
+    TwitterShareButton,
+    RedditShareButton,
+    TelegramShareButton, 
+    FacebookIcon, 
+    WhatsappIcon, 
+    TelegramIcon, 
+    TwitterIcon, 
+    RedditIcon 
+} from "react-share";
 import useStyles from '../containers/styles';
 
-const ShareInvitation = ({id}) => {
+const ShareInvitation = ({id,name}) => {
     const classes = useStyles();
-    const url = `${window.location.origin}/r/${id}`;
+    const url = ` Hello *${name}*,\nLove is in the air🥰 and I would like you to be my valentine's date.\nplease click on the link below to accept my invitation 💕💕\n${window.location.origin}/r/${id}`;
     return (
-        <Grid style={{marginTop:"-110px"}} item container alignItems="flex-start" justify="center">
-            
-            <Typography className={classes.input} variant="p" align="center">
-                <Link  className={classes.invitation_link} style={{wordBreak:"break-word"}} to="#">
-                    {url}
-                </Link>
-            </Typography>
+        <Grid item container alignItems="flex-start" direction="column" justify="center">
 
-            <Typography className={classes.input} align="center" variant="p">
-                or share via;
+            <Typography style={{width:"100%"}} className={classes.input} align="center" variant="body2">
+                share via;
             </Typography>
             <Grid item container justify="center" direction="row" xs={12}>
                 <FacebookShareButton url={url}>
@@ -36,7 +41,7 @@ const ShareInvitation = ({id}) => {
                     <RedditIcon size={32} round={true}/>
                 </RedditShareButton> 
             </Grid>
-            <Typography style={{marginTop:"30px"}} align="center">
+            <Typography style={{marginTop:"30px",width:"100%"}} align="center">
                 to check on invitation status, <RouterLink to="/sent">Click here</RouterLink>
             </Typography>
         </Grid>

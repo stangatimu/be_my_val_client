@@ -6,24 +6,28 @@ import bmv_bg from "../assets/bmv_bg.jpg";
 
 let colors = {
     red:"#bd3625",
-    text_color:"#232323"
+    text_color:"#232323",
+    bg_red:"#852317"
 }
 
 const useStyles = makeStyles({
     root:{
         backgroundImage:`url(${bmv_bg})`,
-        minHeight: "90vh",
+        minHeight: "100vh",
+        backgroundRepeat:"repeat-x",
+        backgroundColor:colors.bg_red,
         backgroundSize: "contain",
         overflowX:"hidden"
     },
     content:{
         background:"#fff",
-        minHeight:"70vh",
-        height:"400px",
-        borderTopLeftRadius: "60% 30%",
-        borderTopRightRadius: "60% 30%",
-        minWidth:"120%",
-        padding:"0 11%",
+        borderRadius:"4px",
+        width:"400px",
+        maxWidth:"90%",
+        padding:"7% 11%",
+    },
+    form_content:{
+        padding:"4% 0% !important"
     },
     golden_ring_home:{
         marginBottom:"-10px",
@@ -60,7 +64,7 @@ const useStyles = makeStyles({
     },
     alert:{
         borderRadius: "5px",
-        lineHeight: ".9em",
+        textAlign: "center",
         width:"90%",
         padding: "10px",
         margin:"10px auto"
@@ -76,14 +80,15 @@ const useStyles = makeStyles({
     },
     invitation_link:{
         color:colors.red,
-        fontSize:"1.3em",
+        fontSize:"1.1em",
         fontStyle:"italic"
     },
     recepient_name:{
         fontFamily:"'Satisfy', cursive",
         margin:"10px 0",
         fontWeight:"100",
-        fontSize:"1.8em"
+        fontSize:"2em",
+        paddingLeft:"5px"
     },
     sent_invitation_name:{
         fontFamily:"'Satisfy', cursive",

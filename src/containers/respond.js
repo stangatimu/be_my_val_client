@@ -19,9 +19,9 @@ const Respond = ({match,saved_invitations}) => {
     });
 
     const [ onRespond, { data:res_data,loading:res_loading,error:res_error}] = useMutation(RESPOND_TO_INVITATION);
-
+    
     return (
-        <Grid className={classes.root} justify="center" container direction="row" >
+        <Grid className={classes.root} justify="center" container alignItems="flex-start" direction="row" >
             <Grid item container style={{height:"200px"}} justify="center" direction="column" alignItems="center">
                 <img
                 src={golden_ring} 
@@ -31,7 +31,15 @@ const Respond = ({match,saved_invitations}) => {
                 I got this feeling<span aria-label="love eyes" role="img">😍</span>
                 </Typography>              
             </Grid>
-            <Grid item className={classes.content} alignItems="center" justify="flex-start" container direction="column">
+            <Grid 
+             item 
+             className={classes.content}
+             style={{padding:"4%"}}
+             alignItems="center" 
+             justify="flex-start" 
+             container 
+             direction="column"
+             >
                 {loading && !data && (
                     <CircularProgress color="secondary" size={40} thickness={4}/>
                 )}
@@ -58,19 +66,19 @@ const Respond = ({match,saved_invitations}) => {
 						{"Sorry, something went wrong. Try again later."}
 					</Typography>)
 				}
-                {!!data && !res_data && data.Invitation.GetByID && (
+                {!res_data && data?.Invitation?.GetByID && (
                     <Fragment>
-                    <Typography style={{fontSize:"2.5em",lineHeight:".6em"}} className={classes.welcome_message} align="center">
+                    <Typography className={classes.welcome_message} align="center">
                         Will you 
                     </Typography>
-                    <Typography style={{fontSize:"2.5em",lineHeight:".2em"}} className={classes.welcome_message}  align="center">
+                    <Typography className={classes.welcome_message}  align="center">
                         be my 
                     </Typography>
-                    <Typography style={{fontSize:"3.5em",lineHeight:".7em"}} className={classes.welcome_message} align="center">
-                        valentine's? 
+                    <Typography className={classes.welcome_message} align="center">
+                        valentine's
                     </Typography>
-                    <Typography align="center" className={`${classes.recepient_name} recepient_name`}>
-                        {data.Invitation.GetByID.recepient.name}&ensp;<span className="blinker">_</span>
+                    <Typography align="center" variant="h5" className={`${classes.recepient_name} recepient_name`}>
+                        {`${data.Invitation.GetByID.recepient.name}?`}<span className="blinker">_</span>
                     </Typography>
                     {!res_loading && (
                         <Fragment>
@@ -90,7 +98,7 @@ const Respond = ({match,saved_invitations}) => {
                             }} 
                             color="secondary" 
                             variant="outlined">
-                                NO
+                                Maybe
                             </Button>
                         </Fragment>
                     )}
@@ -98,8 +106,8 @@ const Respond = ({match,saved_invitations}) => {
                        <CircularProgress color="secondary" size={24} thickness={4}/> 
                     )}
                     <Grid item container justify="center">
-                        <Typography style={{position:"absolute",fontStyle:"italic",bottom:"5px"}}>
-                            with love from&ensp;{data.Invitation.GetByID.sender}
+                        <Typography style={{position:"absolute", color:"#dcdcdc",fontStyle:"italic",bottom:"5px"}}>
+                            With love from&ensp;{data.Invitation.GetByID.sender}
                             {data.Invitation.GetByID.recepient && data.Invitation.GetByID.recepient.alias && (
                                 <span>
                                     &ensp;to {data.Invitation.GetByID.recepient.alias}
@@ -115,7 +123,7 @@ const Respond = ({match,saved_invitations}) => {
                  {!!res_data && !res_data.Invitation.RespondToInvitation && (
                      <AccepetedInvitation sad={true}/>
                  )}
-                 {!!res_data && (
+                 {!!res_data && !saved_invitations.length && (
                      <Button className={classes.button} style={{position:"absolute",bottom:"20px"}} variant="contained" size="big">
                         <Link to="/invite">
                             Create Invitation

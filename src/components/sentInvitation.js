@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
 import { Grid, Typography, Divider } from '@material-ui/core';
-import useStyles from '../containers/styles';
+// peding
+import pending from "../assets/pending.webp";
 
 const SentInvitation = ({data}) => {
-    const classes = useStyles();
     return (
         <Fragment>
         <Grid direction="row" container justify="space-evenly">
             <Grid item xs={8}>
-                <Typography variant="h5" className={classes.sent_invitation_name}>
+                <Typography variant="h6">
                     {!!data.recepient && data.recepient.name}
                     {!!data.recepient && data.recepient.alias !== "null" && (
                         <span>
@@ -17,7 +17,7 @@ const SentInvitation = ({data}) => {
                     )}
                 </Typography>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3} container justify="flex-end">
                 {data.status?
                  (
                      <Typography align="center">
@@ -25,8 +25,8 @@ const SentInvitation = ({data}) => {
                      </Typography>
                  ):
                  (
-                     <Typography style={{fontStyle:"italic",color:"#8a4003",fontSize:"1.3em"}}>
-                         pending
+                     <Typography style={{color:"#8a4003"}}>
+                         <img style={{height:"30px"}} src={pending} alt="pending"/>
                      </Typography>
                  )
                 }
