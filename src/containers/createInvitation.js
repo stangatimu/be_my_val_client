@@ -72,7 +72,7 @@ const CreateInvitation = ({saved_invitations}) => {
                 is_loading={loading} 
                 onCreate={(data)=>createInvitation({variables:data,errorPolicy:"all"})}/>:
                 (
-                    <ShareInvitation name={data?.Invitation?.Create?._id?.recepient?.name || "Love"} id={"data.Invitation.Create._id"}/>
+                    <ShareInvitation name={data.Invitation.Create.recepient?.name || ""} id={data.Invitation.Create._id}/>
                 )}
             </Grid>           
         </Grid>
